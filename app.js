@@ -159,7 +159,7 @@ app.post("/api/verify-email-otp", (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Registration Successful",
-      text: `Your registration was successful. Here are your login details:\n\nUser ID: ${userId}\nPassword: ${password}\n\nPlease change your password after your first login.`,
+      text: `Your registration was successful. Here are your login details:\n\nUser ID: ${userId}\nPassword: ${password}.`,
     };
 
       await transporter.sendMail(mailOptions);
