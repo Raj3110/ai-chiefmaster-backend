@@ -154,6 +154,17 @@ app.post("/api/verify-email-otp", (req, res) => {
       };
   
       const result = await db.collection(db_collection).insertOne(newUser);
+
+      const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Registration Successful",
+      text: `Your registration was successful. Here are your login details:\n\nUser ID: ${userId}\nPassword: ${password}\n\nPlease change your password after your first login.`,
+    };
+
+      await transporter.sendMail(mailOptions);
+
+      
       res.json({
         message: "User registered successfully",
         userId: newUser.userId,
