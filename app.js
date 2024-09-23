@@ -8,7 +8,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const app = express();
 app.use(
   cors({
-    origin: 'https://dashboard.aichefrecipe.com',
+    origin: process.env.CLIENT_URI,
     credentials: true,
   })
 );
